@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Tab Switching Detection</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Online Examination System</h1>
+    <p>Please do not switch tabs during the exam.</p>
+
+    <script>
+        let tabSwitchCount = 0;
+        const maxAllowedSwitches = 3; // Maximum number of allowed tab switches
+
+        // Detect when the tab visibility changes
+        document.addEventListener("visibilitychange", function() {
+        if (document.hidden) {
+            tabSwitchCount++;
+            alert("You have switched away from the tab. Please stay on this tab.");
+
+
+            // Check if the number of tab switches exceeds the limit
+            if (tabSwitchCount > maxAllowedSwitches) {
+            alert("You have switched tabs too many times. The exam is now terminated.");
+            // Optionally, take further action like ending the exam
+            endExam();
+            }
+        }
+        });
+    </script>
+</body>
+</html>
